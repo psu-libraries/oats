@@ -1,0 +1,17 @@
+{
+  "work_type": "article",
+  "title": "Article Title",
+  "description": "Abstract...",
+  "creators": [
+    {
+      "display_name": "Nobody Anderson"
+    },
+    {
+      "psu_id": "sre53"
+    }
+  ],
+  "visibility": "open",
+  "rights": "https://creativecommons.org/licenses/by/4.0/",
+  "published_date": "2020",
+  "embargoed_until": "2025-01-01"
+}

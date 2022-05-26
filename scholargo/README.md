@@ -1,0 +1,1 @@
+This package provides a golang library and command line tool for depositing work to ScholarSphere. See `cmd/deposit` for usage example.

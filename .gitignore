@@ -1,0 +1,7 @@
+cmd/oats/config.yml
+cmd/oats/*.csv
+cmd/oats/logs
+cmd/oats/oats
+imports/
+dist/
+env.sh
