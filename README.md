@@ -1,6 +1,6 @@
 # OATS
 
-This repository provides a collection of programs for managing the OA workflow. 
+This repository provides a collection of programs for managing the OA workflow.
 
 Organization:
 
@@ -17,7 +17,7 @@ Requires [Go](https://go.dev/dl/) v1.17 or greater.
 
 ```sh
 # build primary oats command from source:
-git@git.psu.edu:sre53/oats.git
+git clone git@github.com:psu-libraries/oats.git
 cd oats/cmd/oats
 go build
 ```
