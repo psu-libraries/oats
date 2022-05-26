@@ -12,11 +12,11 @@ import (
 	"log"
 	"strings"
 
-	"git.psu.edu/sre53/oats/crossref"
-	"git.psu.edu/sre53/oats/rmdb"
 	"github.com/hbollon/go-edlib"
 	"github.com/mehanizm/airtable"
 	"github.com/muesli/coral"
+	"github.com/psu-libraries/oats/crossref"
+	"github.com/psu-libraries/oats/rmdb"
 )
 
 type TitleMatchErr struct {

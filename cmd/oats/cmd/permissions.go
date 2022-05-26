@@ -6,8 +6,8 @@ import (
 	"log"
 	"time"
 
-	"git.psu.edu/sre53/oats/oabutton"
 	"github.com/muesli/coral"
+	"github.com/psu-libraries/oats/oabutton"
 )
 
 // new column values

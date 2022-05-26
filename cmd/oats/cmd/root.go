@@ -8,8 +8,8 @@ import (
 	"log"
 	"os"
 
-	"git.psu.edu/sre53/oats/cmd/oats/base"
 	"github.com/muesli/coral"
+	"github.com/psu-libraries/oats/cmd/oats/base"
 )
 
 var oats *base.Oats

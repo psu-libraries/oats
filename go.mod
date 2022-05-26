@@ -1,4 +1,4 @@
-module git.psu.edu/sre53/oats
+module github.com/psu-libraries/oats
 
 go 1.17
 

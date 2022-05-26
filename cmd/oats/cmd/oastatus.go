@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"log"
 
-	"git.psu.edu/sre53/oats/unpaywall"
 	"github.com/muesli/coral"
+	"github.com/psu-libraries/oats/unpaywall"
 )
 
 // Updates OA_status in Airtable using Unpaywall API

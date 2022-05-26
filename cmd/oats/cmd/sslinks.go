@@ -5,8 +5,8 @@ import (
 	"log"
 	"strings"
 
-	"git.psu.edu/sre53/oats/scholargo"
 	"github.com/muesli/coral"
+	"github.com/psu-libraries/oats/scholargo"
 )
 
 var sslinkCmd = &coral.Command{

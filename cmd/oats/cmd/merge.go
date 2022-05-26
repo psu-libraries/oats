@@ -7,9 +7,9 @@ import (
 	"io"
 	"os"
 
-	"git.psu.edu/sre53/oats/cmd/oats/base"
 	"github.com/dimchansky/utfbom"
 	"github.com/muesli/coral"
+	"github.com/psu-libraries/oats/cmd/oats/base"
 )
 
 var mergeCmd = &coral.Command{

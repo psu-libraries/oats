@@ -40,12 +40,12 @@ Use "oats [command] --help" for more information about a command.
 If you already have [Go installed](https://go.dev/doc/install) (v1.17 or later):
 ```sh
 # install with go
-go install git.psu.edu/sre53/oats/cmd/oats@latest
+go install github.com/psu-libraries/oats/cmd/oats@latest
 # run it with:
 ~/go/bin/oats --help
 ```
 
-Alternatively, you can directly [download unsigned binaries](https://git.psu.edu/sre53/oats/-/releases). A caveat of this approach is that your operating system may refuse to run unsigned binaries.  
+Alternatively, you can directly [download unsigned binaries](https://github.com/psu-libraries/oats/-/releases). A caveat of this approach is that your operating system may refuse to run unsigned binaries.  
 
 ## Configuration
 

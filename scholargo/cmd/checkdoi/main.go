@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	"git.psu.edu/sre53/oats/scholargo"
+	"github.com/psu-libraries/oats/scholargo"
 )
 
 const (

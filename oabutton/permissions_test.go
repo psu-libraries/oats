@@ -3,8 +3,8 @@ package oabutton_test
 import (
 	"testing"
 
-	"git.psu.edu/sre53/oats/oabutton"
 	"github.com/matryer/is"
+	"github.com/psu-libraries/oats/oabutton"
 )
 
 func TestPermissions(t *testing.T) {

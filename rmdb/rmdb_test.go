@@ -6,7 +6,7 @@ import (
 	"os"
 	"testing"
 
-	"git.psu.edu/sre53/oats/rmdb"
+	"github.com/psu-libraries/oats/rmdb"
 )
 
 const env = "RMDB_KEY"

@@ -15,10 +15,10 @@ import (
 	"sort"
 	"strings"
 
-	"git.psu.edu/sre53/oats/crossref"
-	"git.psu.edu/sre53/oats/rmdb"
-	"git.psu.edu/sre53/oats/scholargo"
 	"github.com/muesli/coral"
+	"github.com/psu-libraries/oats/crossref"
+	"github.com/psu-libraries/oats/rmdb"
+	"github.com/psu-libraries/oats/scholargo"
 )
 
 var depositFlags struct {

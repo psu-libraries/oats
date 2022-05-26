@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	"git.psu.edu/sre53/oats/rmdb"
+	"github.com/psu-libraries/oats/rmdb"
 )
 
 var aiID string

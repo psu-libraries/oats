@@ -5,8 +5,8 @@ import (
 	"log"
 	"strings"
 
-	"git.psu.edu/sre53/oats/rmdb"
 	"github.com/muesli/coral"
+	"github.com/psu-libraries/oats/rmdb"
 )
 
 const SSLinkPrefix = "https://scholarsphere.psu.edu/resources/"

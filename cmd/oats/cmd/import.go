@@ -15,10 +15,10 @@ import (
 	"os"
 	"strings"
 
-	"git.psu.edu/sre53/oats/cmd/oats/base"
 	"github.com/dimchansky/utfbom"
 	"github.com/mehanizm/airtable"
 	"github.com/muesli/coral"
+	"github.com/psu-libraries/oats/cmd/oats/base"
 )
 
 // required fields for activity insight report
