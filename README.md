@@ -5,7 +5,7 @@ used to automate updates to a project-specific Airtable database using
 information from various APIs (RMD, CrossRef, Unpaywall, and Open Access
 Button).
 
-```sh
+```
 # oats --help
 OA Tools: a collection of programs for managing the OA workflow
 
@@ -98,7 +98,7 @@ go build
 
 This project uses [GoReleaser](https://goreleaser.com/intro/)
 
-## Organization:
+## Code Organization:
 
 - `cmd` - The primary `oats` command is `cmd/oats`.
 - `crossref`: library for querying Crossref
@@ -108,7 +108,7 @@ This project uses [GoReleaser](https://goreleaser.com/intro/)
 - `unpaywall`: library for querying unpaywall
 
 
-## Additional Notes
+## Usage Notes
 
 ### Depositing Multiple IDs
 
@@ -130,3 +130,11 @@ while read id; do oats deposit $id; done < deposit-ids.txt
 # run in production:
 while read id; do oats -p deposit $id; done < deposit-ids.txt
 ```
+
+You may want to add a small delay between each deposit command to avoid overwhelming the ScholarSphere API: 
+```sh
+# sleep two seconds after each deposit
+while read id; do oats -p deposit $id; sleep 2; done < deposit-ids.txt
+
+```
+
