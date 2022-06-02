@@ -42,7 +42,7 @@ go install github.com/psu-libraries/oats/cmd/oats@latest
 ~/go/bin/oats --help
 ```
 
-Alternatively, you can directly [download unsigned binaries](https://github.com/psu-libraries/oats/-/releases). A caveat of this approach is that your operating system may refuse to run unsigned binaries.  
+Alternatively, you can directly [download unsigned binaries](https://github.com/psu-libraries/oats/releases). A caveat of this approach is that your operating system may refuse to run unsigned binaries.  
 
 ## Configuration
 
