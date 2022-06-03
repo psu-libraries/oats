@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/psu-libraries/oats/rmdb"
+	"github.com/psu-libraries/oats/rmd"
 )
 
 var aiID string
@@ -17,17 +17,17 @@ func main() {
 	flag.StringVar(&doi, `doi`, ``, `DOI`)
 	flag.Parse()
 
-	key := os.Getenv("RMDB_KEY")
-	url := os.Getenv("RMDB_URL")
+	key := os.Getenv("RMD_KEY")
+	url := os.Getenv("RMD_URL")
 
 	if key == "" {
-		log.Fatal("RMDB_KEY not set")
+		log.Fatal("RMD_KEY not set")
 	}
 
 	if url == "" {
-		log.Fatal("RMDB_URL not set")
+		log.Fatal("RMD_URL not set")
 	}
-	cli := rmdb.NewClient(url, key)
+	cli := rmd.NewClient(url, key)
 
 	var query map[string]string
 	if aiID != "" {

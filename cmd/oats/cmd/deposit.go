@@ -17,7 +17,7 @@ import (
 
 	"github.com/muesli/coral"
 	"github.com/psu-libraries/oats/crossref"
-	"github.com/psu-libraries/oats/rmdb"
+	"github.com/psu-libraries/oats/rmd"
 	"github.com/psu-libraries/oats/scholargo"
 )
 
@@ -69,8 +69,8 @@ func runDeposit(cmd *coral.Command, args []string) error {
 	log.Printf("using airtable=%s, scholarsphere=%s, rmd=%s", oats.AirtableBase(), scholURL, rmdbURL)
 
 	//RMDB client
-	rmdbCli := rmdb.NewClient(rmdbURL, oats.RMDB.APIKey)
-	var rmdPubs []rmdb.Publication // RMD publications with depositID
+	rmdbCli := rmd.NewClient(rmdbURL, oats.RMDB.APIKey)
+	var rmdPubs []rmd.Publication // RMD publications with depositID
 
 	// ScholarSphere Client
 	schol := scholargo.Client{
@@ -347,7 +347,7 @@ func convertCrossRefAuthors(auths []crossref.Author) []scholargo.Creator {
 	return ret
 }
 
-func convertRMDAuthors(auths []rmdb.Contributor) []scholargo.Creator {
+func convertRMDAuthors(auths []rmd.Contributor) []scholargo.Creator {
 	var ret []scholargo.Creator
 	for _, a := range auths {
 		ret = append(ret, scholargo.Creator{

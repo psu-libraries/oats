@@ -6,7 +6,6 @@ information from various APIs (RMD, CrossRef, Unpaywall, and Open Access
 Button).
 
 ```
-# oats --help
 OA Tools: a collection of programs for managing the OA workflow
 
 Usage:
@@ -103,7 +102,7 @@ This project uses [GoReleaser](https://goreleaser.com/intro/)
 - `cmd` - The primary `oats` command is `cmd/oats`.
 - `crossref`: library for querying Crossref
 - `oabutton`: library for querying OA Button
-- `rmdb`: library for querying RMD.
+- `rmd`: library for querying RMD.
 - `scholargo`: library for ScholarSphere query/deposit
 - `unpaywall`: library for querying unpaywall
 

@@ -1,4 +1,4 @@
-package rmdb_test
+package rmd_test
 
 import (
 	"fmt"
@@ -6,10 +6,10 @@ import (
 	"os"
 	"testing"
 
-	"github.com/psu-libraries/oats/rmdb"
+	"github.com/psu-libraries/oats/rmd"
 )
 
-const env = "RMDB_KEY"
+const env = "RMD_KEY"
 const url = "https://metadata-qa.libraries.psu.edu"
 
 func TestGetUserPubs(t *testing.T) {
@@ -18,7 +18,7 @@ func TestGetUserPubs(t *testing.T) {
 	if key == "" {
 		log.Fatal("environment variable not set:", env)
 	}
-	cli := rmdb.NewClient(url, key)
+	cli := rmd.NewClient(url, key)
 	pubs, err := cli.UserPublications(user)
 	if err != nil {
 		t.Fatal(err)
@@ -34,7 +34,7 @@ func TestGetAIPubs(t *testing.T) {
 	if key == "" {
 		log.Fatal("environment variable not set:", env)
 	}
-	cli := rmdb.NewClient(url, key)
+	cli := rmd.NewClient(url, key)
 	pubs, err := cli.PublicationsAI(aiUD)
 	if err != nil {
 		t.Fatal(err)
@@ -50,7 +50,7 @@ func TestGetDOIPubs(t *testing.T) {
 	if key == "" {
 		log.Fatal("environment variable not set:", env)
 	}
-	cli := rmdb.NewClient(url, key)
+	cli := rmd.NewClient(url, key)
 	pubs, err := cli.PublicationsDOI(doi)
 	if err != nil {
 		t.Fatal(err)
@@ -66,7 +66,7 @@ func TestUpdateLink(t *testing.T) {
 	if key == "" {
 		log.Fatal("environment variable not set:", env)
 	}
-	cli := rmdb.NewClient(url, key)
+	cli := rmd.NewClient(url, key)
 	err := cli.UpdateScholarSphereLink(aiUD, "nil")
 	if err != nil {
 		t.Fatal(err)

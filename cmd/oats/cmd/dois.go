@@ -16,7 +16,7 @@ import (
 	"github.com/mehanizm/airtable"
 	"github.com/muesli/coral"
 	"github.com/psu-libraries/oats/crossref"
-	"github.com/psu-libraries/oats/rmdb"
+	"github.com/psu-libraries/oats/rmd"
 )
 
 type TitleMatchErr struct {
@@ -54,7 +54,7 @@ func init() {
 func runDOIs(cmd *coral.Command, args []string) error {
 	// Note: always using production rmb url
 	rmdbURL := oats.RMDB.Production
-	rmdbC := rmdb.NewClient(rmdbURL, oats.RMDB.APIKey)
+	rmdbC := rmd.NewClient(rmdbURL, oats.RMDB.APIKey)
 	// map: Airtable Record ID -> Activity Insight ID
 	// Needed to get actual Activity Insight ID for Task
 	AIIDlookup := map[string]string{}
@@ -148,7 +148,7 @@ func confirmDOICrossRef(doi, title string) error {
 	return nil
 }
 
-func confirmRMD(rmdc *rmdb.Client, AIID, title string) (string, error) {
+func confirmRMD(rmdc *rmd.Client, AIID, title string) (string, error) {
 	rmdPubs, err := rmdc.PublicationsAI(AIID)
 	if err != nil {
 		return "", fmt.Errorf(`RMD request failed for %s: %w`, AIID, err)
@@ -218,7 +218,7 @@ func updateConfirmDOI(r *airtable.Record, doi string) error {
 }
 
 // extract DOIs from an RMD record
-func findPubDOI(pubs []rmdb.Publication) string {
+func findPubDOI(pubs []rmd.Publication) string {
 	var dois []string
 	for _, p := range pubs {
 		dois = append(dois, strings.ToLower(p.Attributes.DOI))

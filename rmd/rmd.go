@@ -1,4 +1,4 @@
-package rmdb
+package rmd
 
 import (
 	"bytes"

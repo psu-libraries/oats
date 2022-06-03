@@ -6,7 +6,7 @@ import (
 	"strings"
 
 	"github.com/muesli/coral"
-	"github.com/psu-libraries/oats/rmdb"
+	"github.com/psu-libraries/oats/rmd"
 )
 
 const SSLinkPrefix = "https://scholarsphere.psu.edu/resources/"
@@ -30,7 +30,7 @@ func runRMDUpdated(cmd *coral.Command, args []string) error {
 
 	// always use rmd production data
 	rmdbURL := oats.RMDB.Production
-	rmdbC := rmdb.NewClient(rmdbURL, oats.RMDB.APIKey)
+	rmdbC := rmd.NewClient(rmdbURL, oats.RMDB.APIKey)
 
 	// Query Airtable:
 	// return selected columns
