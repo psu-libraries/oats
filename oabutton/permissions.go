@@ -102,29 +102,3 @@ func (ac ArchiveConditions) ScholarSphereOK() bool {
 func (ac ArchiveConditions) BestLicense() string {
 	return ac.License
 }
-
-// TestPermissionsAPI checks whether the OAB Permissions API is working as expected.
-//
-func (c *Client) TestPermissionsAPI() error {
-	tests := []string{
-		"10.1037/apl0000872",
-		"10.7191/jeslib.2021.1211",
-		"10.1103/PhysRevLett.125.126801",
-	}
-	var fails int
-	for _, t := range tests {
-		perms, err := c.GetPermissions(t)
-		if err != nil {
-			return err
-		}
-		for _, p := range perms {
-			if p.Version == "" || p.License == "" || len(p.Locations) == 0 {
-				fails++
-			}
-		}
-	}
-	if fails == len(tests) {
-		return fmt.Errorf("Permissions response does not include expected values (API may have changed)")
-	}
-	return nil
-}

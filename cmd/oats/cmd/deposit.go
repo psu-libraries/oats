@@ -1,8 +1,13 @@
-/*
-Copyright © 2022
-
-*/
 package cmd
+
+// The deposit command deposits articles to ScholarSphere using information
+// in Airtable. The Task's ID (Activity Insight) is a required argument. By
+// default, the Task must have 'Status'='To Deposit' and
+// 'Permissions'='Accepted Version OK', however there are options to skip
+// these checks. The file matching the 'POST_FILE_1_DOC' value in the most
+// recent Activity Insight export is used for the deposit. The file search
+// is scoped to the directory set with the 'article_path' configuration.
+// Deposit metadata is based on data in RMD, CrossRef, and the Task table.
 
 import (
 	"encoding/json"

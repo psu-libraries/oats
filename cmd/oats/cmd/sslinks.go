@@ -1,5 +1,11 @@
 package cmd
 
+// The sslink command tries to set the ScholarSphere_Link column for Tasks in
+// Airtable that have DOIs. It uses the DOI to check if the article represented
+// in the Task has already been deposited to ScholarSphere. If it has, the
+// ScholarSphere link is set in Airtable. Tasks that already have links are
+// ignored.
+
 import (
 	"fmt"
 	"log"
@@ -12,8 +18,13 @@ import (
 var sslinkCmd = &coral.Command{
 	Use:   "sslink",
 	Short: "Find ScholarSphere Links for Tasks in Airtable",
-	Long:  `The sslinks command finds and sets the ScholarSphere_Links field in Airtable.`,
-	RunE:  runSSLink,
+	Long: `The sslink command tries to set the ScholarSphere_Link column for Tasks in
+Airtable that have DOIs. It uses the DOI to check if the article represented
+in the Task has already been deposited to ScholarSphere. If it has, the
+ScholarSphere link is set in Airtable. Tasks that already have links are
+ignored.`,
+
+	RunE: runSSLink,
 }
 
 func init() {
@@ -39,7 +50,7 @@ func runSSLink(cmd *coral.Command, args []string) error {
 	// filter confirmed and present DOIs
 	filter := fmt.Sprintf("AND(LEN({%s})>1,{%s},LEN({ScholarSphere_Link})<4,{Status} != \"Complete\")", COL_DOI, COL_DOI_CONF)
 	// return selected columss
-	cols := []string{COL_AI_ID, COL_DOI, "ScholarSphere_Link"}
+	cols := []string{COL_AI_ID, COL_DOI, COL_SCHOLINK}
 	recs, err := oats.GetRecordsFilterFields(oats.Airtable.Tasks, filter, cols)
 	if err != nil {
 		return fmt.Errorf(`failed to get airtable records: %w`, err)

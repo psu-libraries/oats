@@ -1,5 +1,8 @@
 package cmd
 
+// The tasks command creates new Tasks in Airtable for Activity Insight entries
+// that do not have a corresponding Task.
+
 import (
 	"fmt"
 	"log"

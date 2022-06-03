@@ -1,29 +1,24 @@
 package base
 
+// This file includes utility functions for Airtable
+
 import (
 	"fmt"
 
 	"github.com/mehanizm/airtable"
 )
 
-const (
-	COL_ID        = "ID"
-	COL_AI_ID     = "AI_ID"
-	COL_STATUS    = "Status"
-	COL_DOI       = "DOI"
-	COL_DOI_CONF  = "DOI_Confirmed"
-	COL_OA_STATUS = "OA_status"
-	COL_OA_LINK   = "OA_Link"
-)
-
-type atIndex map[string][]*airtable.Record
-
+// GetRecord returns an airtable record associated with the given table name and
+// id.
 func (cmd *Oats) GetRecord(tableName string, id string) (*airtable.Record, error) {
 	table := cmd.atClient.GetTable(cmd.AirtableBase(), tableName)
 	return table.GetRecord(id)
 }
 
-// downloads all records in the Airtable
+// GetRecordsFilterFields returns slice of airtable records in the table based
+// on the specified filter. The filter string should use the Airtable formula
+// syntax. The fields parameter can be used to specify columns in the returned
+// records
 func (cmd *Oats) GetRecordsFilterFields(tableName string, filter string, fields []string) ([]*airtable.Record, error) {
 	var (
 		offset  string
@@ -54,10 +49,6 @@ func (cmd *Oats) GetRecordsFilterFields(tableName string, filter string, fields 
 	return allRecs, nil
 }
 
-// func (cmd *Oats) getRecords(tableName string) ([]*airtable.Record, error) {
-// 	return cmd.getRecordsFilterFields(tableName, ``, nil)
-// }
-
 // // _commitFunc is common signature of airtable post/put/patch functions
 type _commitFunc func(*airtable.Records) (*airtable.Records, error)
 
@@ -80,46 +71,18 @@ func (cmd *Oats) _commitRecords(recs []*airtable.Record, f _commitFunc) ([]*airt
 	return responses, nil
 }
 
-// patchRecords does PUT on records in an Airtable.
-// A PUT request will perform a destructive update and clear all unspecified cell values.
-// func (cmd *Oats) putRecords(tableName string, records []*airtable.Record) ([]*airtable.Record, error) {
-// 	table := cmd.atClient.GetTable(cmd.config.Airtable.BaseID, tableName)
-// 	return cmd._commitRecords(records, table.UpdateRecords)
-// }
-
-// postRecords does POST for records in an Airtable.
-// A POST request will create new rows for each record.
+// PostRecords does POST for records in an Airtable. A POST request will create
+// new rows for each record.
 func (cmd *Oats) PostRecords(tableName string, records []*airtable.Record) ([]*airtable.Record, error) {
 	table := cmd.atClient.GetTable(cmd.AirtableBase(), tableName)
 	return cmd._commitRecords(records, table.AddRecords)
 }
 
-// postRecord does POST for a seing record in an Airtable.
-// A POST request will create new rows for each record.
-// func (cmd *Oats) postRecord(tableName string, record *airtable.Record) (*airtable.Record, error) {
-// 	table := cmd.atClient.GetTable(cmd.config.Airtable.BaseID, tableName)
-// 	resp, err := cmd._commitRecords([]*airtable.Record{record}, table.AddRecords)
-// 	if err != nil {
-// 		return nil, err
-// 	}
-// 	if len(resp) != 1 {
-// 		return nil, errors.New(`no record received`)
-// 	}
-// 	return resp[0], nil
-// }
+type atIndex map[string][]*airtable.Record
 
-// type _atRecords []*airtable.Record
-
-// func (atr _atRecords) recordIDMap(idField string) (idTable, error) {
-// 	var recs []row
-// 	for i := range atr {
-// 		recs = append(recs, row(atr[i].Fields))
-
-// 	}
-// 	return table(recs).asIDTable(idField)
-// }
-
-// create
+// IndexAirtableRecords buils an atIndex (map of airtable records) from recs
+// indexed on the specified field. The record values associated with the
+// specified field must be resolvable to strings.
 func IndexAirtableRecords(recs []*airtable.Record, field string) (atIndex, error) {
 	ret := make(atIndex)
 	for _, rec := range recs {

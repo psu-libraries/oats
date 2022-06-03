@@ -1,12 +1,14 @@
 package base
 
+// config file struct
+
 import (
 	"os"
 
 	yaml "gopkg.in/yaml.v2"
 )
 
-// Config is the global configuration for command line utility
+// Config is the global configuration
 type Config struct {
 	Airtable struct {
 		APIKey string
@@ -46,12 +48,3 @@ func loadConfig(file string) (*Config, error) {
 	var conf Config
 	return &conf, yaml.NewDecoder(f).Decode(&conf)
 }
-
-// func (c *config) writeConfig(file string) error {
-// 	f, err := os.OpenFile(file, os.O_RDWR|os.O_CREATE, 0660)
-// 	if err != nil {
-// 		return err
-// 	}
-// 	defer f.Close()
-// 	return yaml.NewEncoder(f).Encode(c)
-// }

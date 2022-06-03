@@ -1,5 +1,11 @@
 package cmd
 
+//The oastatus command updates the OA_status column in Airtable using
+// information from the Unpaywall API. Only active Tasks with confirmed DOIs are
+// affected. Previous values in the OA_status column may be overwritten because
+// their OA status may change. If the OA status is gold or hybrid, the OA_Link
+// column will be set using the "best_oa_location" field from Unpaywall.
+
 import (
 	"fmt"
 	"log"

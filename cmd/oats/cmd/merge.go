@@ -1,5 +1,10 @@
 package cmd
 
+// The merge command updates existing Tasks in Airtable using data from a
+// provided CSV file. The CSV file must include columns with names matching
+// columns of the Tasks Airtable. The ID column is the only required column:
+// it is used to join rows in the CSV file to rows in the Tasks table.
+
 import (
 	"encoding/csv"
 	"errors"

@@ -1,5 +1,11 @@
 package cmd
 
+// The rmdupdated command updates the RMD_Updated column for Tasks in Airtable
+// using information from RMD. Only Tasks with RMD_Updated unchecked (false) are
+// considered. The command will query RMD using the Task's Activity Insight ID;
+// if a ScholarSphere link is found, the Task's RMD_Updated column is set to
+// true.
+
 import (
 	"fmt"
 	"log"

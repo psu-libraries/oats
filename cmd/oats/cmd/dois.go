@@ -1,10 +1,13 @@
 package cmd
 
-// The confirm-dois command retrieves a list of all tasks in airtable with
-// unconfirmed DOIs and attempts to confirm them. The following rules are
-// used to confirm each DOI:
-// - If the DOI is blank, use Activity Insight ID to fetch publication info.
-// - Query crossref
+// The dois command attempts to confirm unconfirmed DOIs in Airtable using
+// information from CrossRef and RMD. Only active Tasks (Status!="Complete")
+// with unconfirmed DOIs (DOI_Confirmed=false) are affected. The confirmation
+// process is as follows: If the Task has a DOI value, query CrossRef and
+// compare titles; if the titles are similar, the DOI is confirmed. For Tasks
+// without DOI values, query RMD using the Activity Insight ID. If a DOI is
+// found and the titles in RMD and Airtable are similar, validate the DOI as
+// above.
 
 import (
 	"errors"

@@ -1,8 +1,6 @@
-/*
-Copyright © 2022
-
-*/
 package cmd
+
+// root represents the base "oats" command when called without any subcommands.
 
 import (
 	"log"

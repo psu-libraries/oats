@@ -1,5 +1,7 @@
 package cmd
 
+// Some utility functions used by several commands
+
 import (
 	"net/http"
 	"net/url"

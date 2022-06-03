@@ -1,10 +1,7 @@
 package cmd
 
-// Description of the import process
-// - the csv must have the defined columns
-// - must check that the csv does not have duplicate values in the ID column
-// - check existing Airtable records for rows we are updating (all fields are updated)
-//
+// The import command creates and updates Activity Insight entries in Airtable
+// using information from a provided csv file.
 
 import (
 	"encoding/csv"

@@ -15,7 +15,4 @@ func TestPermissions(t *testing.T) {
 	is.True(len(perms) > 0)
 	is.Equal(perms[0].ScholarSphereOK(), true)
 	is.Equal(perms[0].BestLicense(), "other-closed")
-
-	err = c.TestPermissionsAPI()
-	is.NoErr(err)
 }

@@ -1,5 +1,8 @@
 package cmd
 
+// The permissions command updates deposit permissions information in Airtable
+// using article information from Open Access Button's Permissions API.
+
 import (
 	"errors"
 	"fmt"
@@ -42,11 +45,6 @@ func init() {
 
 func runPermissions(cmd *coral.Command, args []string) error {
 	oabc := oabutton.NewClient(oats.OpenAccessButton.Key)
-
-	// test Permissions API
-	if err := oabc.TestPermissionsAPI(); err != nil {
-		return fmt.Errorf("OAB Permissions API is not behaving as expected: %w", err)
-	}
 
 	// Query Airtable: filter confirmed and present DOIs and no Permissions
 	filter := fmt.Sprintf("AND(LEN({%s})>1,{%s},NOT({%s}))", COL_DOI, COL_DOI_CONF, COL_PERM)
